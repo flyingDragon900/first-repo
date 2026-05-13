@@ -55,8 +55,8 @@
 </head>
 <body>
     <button class="print-btn" onclick="printPage()">Download as PDF</button>
-    <h1>CBSE Class 10 Mathematics</h1>
-    <h2>Chapter: Introduction to Trigonometry</h2>
+    <h1 id="pdfHeader">CBSE Class 10 Mathematics</h1>
+    <h2 id="pdfHeader2">Chapter: Introduction to Trigonometry</h2>
     <p style="text-align:center;"><strong>Time: 1 Hour | Max Marks: 80</strong></p>
 
     <div class="section">
@@ -150,13 +150,20 @@
         document.getElementById('currentDate').innerText = new Date().toLocaleDateString();
 
         function printPage() {
-    // 1. Store the original tab title
-    const originalTitle = document.title;
+            const headerText = document.getElementById('pdfHeader').innerText;
+        const headerText2 = document.getElementById('pdfHeader2').innerText;
+        
+        // 2. Store the original page title (the one in the <title> tag)
+        const originalTitle = document.title;
 
-    // 3. Trigger the print dialog
-    window.print();
+        // 3. Set the document title to the H1 text 
+        // This becomes the suggested filename in the print dialog
+        document.title = headerText + headerTest2;
 
-    // 4. Restore the original title so the tab looks normal again
-    document.title = originalTitle;
+        // 4. Open the print dialog
+        window.print();
+
+        // 5. Restore the original title after the dialog closes
+        document.title = originalTitle;
         }
 </script>
