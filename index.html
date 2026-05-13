@@ -54,18 +54,7 @@
 </html>
 </head>
 <body>
-    <div id="printableArea" class="content-box">
-        <h1>Official Document</h1>
-        <p>This is the content that will appear in your PDF.</p>
-        <p>Date: <span id="currentDate"></span></p>
-        <ul>
-            <li>Item 1: Analysis</li>
-            <li>Item 2: Implementation</li>
-            <li>Item 3: Deployment</li>
-        </ul>
-    </div>
-
-    <button class="print-btn" onclick="printPage()">Download as PDF / Print</button>
+    <button class="print-btn" onclick="printPage()">Download as PDF</button>
     <h1>CBSE Class 10 Mathematics</h1>
     <h2>Chapter: Introduction to Trigonometry</h2>
     <p style="text-align:center;"><strong>Time: 1 Hour | Max Marks: 80</strong></p>
@@ -121,7 +110,7 @@
         <div class="question">22. If A = 60&deg; and B = 30&deg;, verify that sin(A - B) = sin A cos B - cos A sin B.</div>
         <div class="question">23. Prove that: (sin &theta; - 2 sin&sup3; &theta;) / (2 cos&sup3; &theta; - cos &theta;) = tan &theta;.</div>
         <div class="question">24. Prove that: 2 (sin<sup>6</sup> &theta; + cos<sup>6</sup> &theta;) - 3 (sin<sup>4</sup> &theta; + cos<sup>4</sup> &theta;) + 1 = 0.</div>
-        <div class="question">25. <strong>Given that sin &theta; + cos &theta; = x, prove that:<br>sin<sup>4</sup> &theta; + cos<sup>4</sup> &theta; = [2 - (x<sup>2</sup> - 1)<sup>2</sup>] / 2</strong></div>
+        <div class="question">25. Given that sin &theta; + cos &theta; = x, prove that:<br>sin<sup>4</sup> &theta; + cos<sup>4</sup> &theta; = [2 - (x<sup>2</sup> - 1)<sup>2</sup>] / 2</div>
     </div>
 
     <div class="section">
@@ -161,8 +150,13 @@
         document.getElementById('currentDate').innerText = new Date().toLocaleDateString();
 
         function printPage() {
-            // This triggers the browser's built-in print dialog
-            // Users can select "Save as PDF" as their printer destination
-            window.print();
+    // 1. Store the original tab title
+    const originalTitle = document.title;
+
+    // 3. Trigger the print dialog
+    window.print();
+
+    // 4. Restore the original title so the tab looks normal again
+    document.title = originalTitle;
         }
 </script>
